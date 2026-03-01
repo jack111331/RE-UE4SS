@@ -114,6 +114,13 @@ if(RC_PROFILER_FLAVOR STREQUAL "Tracy")
     add_subdirectory(tracy)
 endif()
 
+# NumCpp
+set(NUMCPP_NO_USE_BOOST ON)
+FetchContent_Declare(NumCpp
+        GIT_REPOSITORY https://github.com/dpilger26/NumCpp
+        GIT_TAG Version_2.16.0)
+FetchContent_MakeAvailable(NumCpp)
+
 # Organize third-party targets and make their headers visible
 # This function automatically finds all targets created in this directory tree,
 # places them in the deps/third folder in the IDE, and makes their headers visible
