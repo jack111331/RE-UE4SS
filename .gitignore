@@ -79,3 +79,5 @@ vsxmake2022
 
 # xwin
 xwin/*
+
+build_cmake_Game__Shipping__Win64/*

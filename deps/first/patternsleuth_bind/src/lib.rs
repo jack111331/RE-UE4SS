@@ -16,6 +16,7 @@ use patternsleuth::resolvers::{
         kismet::GNatives,
         ConsoleManagerSingleton,
         game_loop::UGameEngineTick,
+        fviewinfo::FViewInfo,
     },
     ResolveError,
 };
@@ -34,6 +35,7 @@ impl_collector! {
         gnatives: GNatives,
         console_manager_singleton: ConsoleManagerSingleton,
         gameengine_tick: UGameEngineTick,
+        fviewinfo: FViewInfo,
     }
 }
 
@@ -72,6 +74,7 @@ pub struct PsEngineVersion {
     minor: u16,
 }
 
+/* Correspond to PsScanConfig in UnrealInitializer.cpp */
 #[repr(C)]
 pub struct PsScanConfig {
     guobject_array: bool,
@@ -85,8 +88,10 @@ pub struct PsScanConfig {
     gnatives: bool,
     console_manager_singleton: bool,
     gameengine_tick: bool,
+    fviewinfo: bool,
 }
 
+/* Correspond to PsScanResults in UnrealInitializer.cpp */
 #[repr(C)]
 pub struct PsScanResults {
     guobject_array: u64,
@@ -100,6 +105,7 @@ pub struct PsScanResults {
     gnatives: u64,
     console_manager_singleton: u64,
     gameengine_tick: u64,
+    fviewinfo: u64,
 }
 
 #[derive(Debug, Default)]
@@ -213,6 +219,13 @@ pub fn ps_scan_internal(ctx: &PsCtx, results: &mut PsScanResults) -> Result<(), 
         gameengine_tick,
         "GameEngineTick",
         "GameEngineTick.lua",
+        true
+    );
+
+    handle!(
+        fviewinfo,
+        "FViewInfo",
+        "FViewInfo.lua",
         true
     );
 
