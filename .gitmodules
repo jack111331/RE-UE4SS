@@ -4,6 +4,6 @@
 [submodule "deps/first/patternsleuth"]
 	path = deps/first/patternsleuth
 	url = https://github.com/jack111331/patternsleuth.git
-[submodule "deps/third/numcpp"]
-	path = deps/third/numcpp
-	url = https://github.com/dpilger26/NumCpp.git
+[submodule "deps/third/NumCpp"]
+	path = deps/third/NumCpp
+	url = https://github.com/dpilger26/NumCpp
