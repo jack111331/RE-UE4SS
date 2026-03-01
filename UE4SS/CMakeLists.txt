@@ -131,8 +131,9 @@ target_link_libraries(UE4SS PUBLIC
 )
 
 # Link third-party dependencies
+target_compile_definitions(UE4SS PRIVATE NUMCPP_NO_USE_BOOST=1)
 target_link_libraries(UE4SS PUBLIC
-    fmt ImGui PolyHook_2 
+    fmt ImGui PolyHook_2 NumCpp::NumCpp
     d3d11 glfw glad opengl32 
     dbghelp psapi ws2_32 ntdll userenv
 )
