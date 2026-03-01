@@ -855,6 +855,7 @@ namespace RC
         config.bHookUObjectProcessEvent = settings_manager.Hooks.HookUObjectProcessEvent;
         config.bHookProcessConsoleExec = settings_manager.Hooks.HookProcessConsoleExec;
         config.bHookUStructLink = settings_manager.Hooks.HookUStructLink;
+        config.bHookFViewInfo = settings_manager.Hooks.HookFViewInfo;
         config.FExecVTableOffsetInLocalPlayer = settings_manager.Hooks.FExecVTableOffsetInLocalPlayer;
         config.FNameToStringMethod = settings_manager.General.DefaultFNameToStringMethod;
         // Apply Debug Build setting from settings file only for now.
@@ -955,6 +956,7 @@ namespace RC
         }
         else if (settings_manager.Debug.RenderMode == GUI::RenderMode::GameViewportClientTick)
         {
+            // TODO-Edge RegisterGameViewportClientTickPostCallback
             Hook::RegisterGameViewportClientTickPostCallback([](auto&,...){gui_render_thread_tick(); }, {false, false, STR("UE4SS"), STR("ImGuiRenderHook")});
         }
 
